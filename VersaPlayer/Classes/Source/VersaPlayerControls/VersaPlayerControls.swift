@@ -307,6 +307,12 @@ open class VersaPlayerControls: View {
         bufferingView?.isHidden = true
     }
     
+    //Open Function
+    public func moveCurrentTime(to time:Double) {
+       let time = handler.player.currentTime() + CMTime(seconds: time, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+       handler.player.seek(to: time)
+    }
+    
     /// Skip forward (n) seconds in time
     @IBAction open func skipForward(sender: Any? = nil) {
         let time = handler.player.currentTime() + CMTime(seconds: skipSize, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
